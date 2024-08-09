@@ -1,5 +1,9 @@
+let roundCounter = 0;
+let humanScore = 0;
+let computerScore = 0;
+const paraChoice = document.createElement("p");
+
 function getComputerChoice() {
-    const container = document.querySelector("#score-container");
     const randomNumber = Math.floor(Math.random() * 3);
     let computerChoice;
     switch (randomNumber) {
@@ -14,19 +18,17 @@ function getComputerChoice() {
             break;
     }
     console.log("Computer choice: " + computerChoice);
-    const paraChoice = document.createElement("p");
-    paraChoice.textContent = `Computer chose ${computerChoice}.`;
+    const container = document.querySelector("#score-container");
+    paraChoice.textContent = `Round ${roundCounter}: Computer chose ${computerChoice}.`;
     container.appendChild(paraChoice);
     return computerChoice;
 }
 
 function getHumanChoice(humanChoice) {
     console.log("Human choice: " + humanChoice);
+    ++roundCounter;
     getComputerChoice();
 }
-
-let humanScore = 0;
-let computerScore = 0;
 
 function playRound(humanChoice, computerChoice) {
     if (humanChoice === computerChoice) {
@@ -53,25 +55,3 @@ const scissorsButton = document.querySelector("#scissors");
 rockButton.addEventListener("click", () => getHumanChoice("rock"));
 paperButton.addEventListener("click", () => getHumanChoice("paper"));
 scissorsButton.addEventListener("click", () => getHumanChoice("scissors"));
-
-
-
-
-
-
-/*
-function playGame(numberOfGames) {
-    for (let i = 1; i <= numberOfGames; i++) {
-        playRound(getHumanChoice(), getComputerChoice());
-    }
-    alert("Your score is " + humanScore + " computer score is " + computerScore + ".");
-    if (humanScore > computerScore) {
-        alert("You win this time");
-    } else if (humanScore < computerScore) {
-        alert("Computer wins! Better luck next time!")
-    } else {
-        alert("Its a draw! Nobody wins!")
-    }
-}
-
-playGame(5);*/
