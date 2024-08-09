@@ -19,13 +19,15 @@ p {
 .button-container {
     border: 2px solid black;
     background-color: rgb(226, 196, 151);
-    width: 50%;
+    width: 30%;
+    min-width: 400px;
     margin: 0px auto;
     display: flex;
     justify-content: space-evenly;
     padding: 30px 0;
     border-radius: 15px;
 }
+
 
 .score {
     margin-top: 1.2rem;
@@ -39,6 +41,16 @@ p {
     border-radius: 5px;
     background-color: yellow;
 }
+
+.button-new-game {
+    max-width: 100px;
+    width: 100px;
+    max-height: 100px;
+    height: 100px;
+    border-radius: 5px;
+    background-color: yellow;
+}
+
 
 .btn:hover {
     background-color: orange;

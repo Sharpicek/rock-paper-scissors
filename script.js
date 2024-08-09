@@ -1,12 +1,12 @@
 let roundCounter = 1;
 let humanScore = 0;
 let computerScore = 0;
-let score;
 const container = document.querySelector("#score-container");
 const scoreboard = document.createElement("p");
 scoreboard.textContent = "Player: 0 - Computer: 0";
 container.appendChild(scoreboard);
 const paraChoice = document.createElement("p");
+const gameEndText = document.createElement("h2");
 
 function getComputerChoice() {
   const randomNumber = Math.floor(Math.random() * 3);
@@ -26,9 +26,12 @@ function getComputerChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-  console.log("Human choice: " + humanChoice);
-  console.log("Computer choice: " + computerChoice);
+  console.log(gameEndText.textContent);
 
+  if (gameEndText.textContent !== "") {
+    gameEndText.textContent = "";    
+    container.removeChild(gameEndText)  
+  };
   if (humanChoice === computerChoice) {
     paraChoice.textContent = `Round ${roundCounter}: It's a draw! Computer also chose ${computerChoice}.`;
   } else if (
@@ -45,6 +48,21 @@ function playRound(humanChoice, computerChoice) {
   ++roundCounter;
   scoreboard.textContent = `Player: ${humanScore} - Computer: ${computerScore}`;
   container.appendChild(paraChoice);
+  if (humanScore === 5 || computerScore === 5) gameEnd();
+}
+
+function gameEnd() {
+  if (humanScore === 5) {
+    gameEndText.textContent = `You win this game of Rock Paper Scissors! ${humanScore} : ${computerScore}`;
+  } else {
+    gameEndText.textContent = `Computer wins this game of Rock Paper Scissors! ${humanScore} : ${computerScore}`;
+  }
+  container.appendChild(gameEndText);
+  roundCounter = 1;
+  humanScore = 0;
+  computerScore = 0;
+  scoreboard.textContent = "";
+  paraChoice.textContent = "";
 }
 
 const rockButton = document.querySelector("#rock");
