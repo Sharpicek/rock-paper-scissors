@@ -26,12 +26,12 @@ function getComputerChoice() {
 }
 
 function playRound(humanChoice, computerChoice) {
-  console.log(gameEndText.textContent);
 
   if (gameEndText.textContent !== "") {
     gameEndText.textContent = "";    
     container.removeChild(gameEndText)  
   };
+
   if (humanChoice === computerChoice) {
     paraChoice.textContent = `Round ${roundCounter}: It's a draw! Computer also chose ${computerChoice}.`;
   } else if (
@@ -45,6 +45,7 @@ function playRound(humanChoice, computerChoice) {
     paraChoice.textContent = `Round ${roundCounter}: You lose! Computer chose ${computerChoice}.`;
     ++computerScore;
   }
+
   ++roundCounter;
   scoreboard.textContent = `Player: ${humanScore} - Computer: ${computerScore}`;
   container.appendChild(paraChoice);
@@ -57,6 +58,7 @@ function gameEnd() {
   } else {
     gameEndText.textContent = `Computer wins this game of Rock Paper Scissors! ${humanScore} : ${computerScore}`;
   }
+
   container.appendChild(gameEndText);
   roundCounter = 1;
   humanScore = 0;
