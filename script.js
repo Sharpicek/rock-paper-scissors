@@ -1,4 +1,5 @@
 function getComputerChoice() {
+    const container = document.querySelector("#score-container");
     const randomNumber = Math.floor(Math.random() * 3);
     let computerChoice;
     switch (randomNumber) {
@@ -13,12 +14,15 @@ function getComputerChoice() {
             break;
     }
     console.log("Computer choice: " + computerChoice);
-    alert("Computer chose " + computerChoice + ".");
+    const paraChoice = document.createElement("p");
+    paraChoice.textContent = `Computer chose ${computerChoice}.`;
+    container.appendChild(paraChoice);
     return computerChoice;
 }
 
 function getHumanChoice(humanChoice) {
     console.log("Human choice: " + humanChoice);
+    getComputerChoice();
 }
 
 let humanScore = 0;
